@@ -1,0 +1,14 @@
+<div class="comparator padding">
+
+<div ng-repeat="(key,value) in meta" >
+	<label>{{value.name}}</label>
+	<div class="value-label" ng-class="{posval: diff[key] > 0}">
+		{{recipe[key]}} {{value.unit}}
+	</div>
+	<div class="bar" ng-style="transform[key]">
+	</div> 
+	<!-- {{transform[key]}} -->
+</div>
+
+
+</div>

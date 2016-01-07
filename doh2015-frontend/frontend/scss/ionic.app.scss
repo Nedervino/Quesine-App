@@ -1,0 +1,337 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+
+#EA6449 red1 			positive
+#BB543D red2			calm
+#EEEDEC beige			stable
+#8F9967	groen1			royal
+#D49764	beetje bruin	balanced
+#524F45 donker			dark
+#DFC7A7 licht			energized
+#7A8956 groen2			assertive
+
+
+
+*/
+ 
+$light:                           #fff !default;
+$stable:                          #EEEDEC !default;
+$positive:                        #EA6449 !default;
+$calm:                            #BB543D !default;
+$balanced:                        #D49764 !default;
+$energized:                       #DFC7A7 !default;
+$assertive:                       #7A8956 !default;
+$royal:                           #8F9967 !default;
+$dark:                            #524F45 !default;
+
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+
+.range input{
+	transition:5s;
+}
+.td-card{
+	position:absolute;
+	left:7%;
+	text-align:center;
+	/*box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;*/
+
+	height:330px;
+	/*border-radius: 2px;
+	border: 1px solid;
+	border-color: grey;*/
+
+	img{
+		height: 250px;
+		width: 100%;
+		margin: 0 auto;
+		display:block;
+	}
+}
+
+
+.flip-container {
+	perspective: 1000;
+}
+
+/* flip the pane when hovered */
+.flip-container.hover .flipper {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+#dislikeTag,#likeTag
+{
+	position:absolute;
+	width:100%;
+	height: 100%;
+	left:0;
+	top:0;
+	background-size:110px;
+	z-index: 99;
+
+
+}
+#dislikeTag{
+	background: url("../img/garbage12.png") no-repeat center center;
+	background-size:110px;
+	background-color: rgba(255,255,255,0.5);
+	
+	opacity: 0;
+}
+
+#likeTag{
+	background: url("../img/covered16.png") no-repeat center center;
+	background-size:110px;
+	background-color: rgba(255,255,255,0.5);
+	opacity: 0;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+/*	overflow:auto !important;*/
+
+	.card{
+		height:299px;
+	}
+}
+
+
+.recipe{
+	padding: 20px;
+	overflow: auto;
+
+}
+
+.tab-item{
+	font-size:1em !important;
+}
+
+.card{
+	background-color: #FDF7EB;
+	
+	.image
+	{
+		position:relative;
+
+		.bg{
+			top:0;
+			height:100%;
+			width:100%;
+			position:absolute;
+			/*box-shadow: inset 0px -30px 60px -5px rgba(0,0,0,0.7);*/
+			box-shadow: inset -18px -189px 74px -127px rgba(0,0,0,0.6);
+		}
+		.receptnaam{
+			font-size: 1.5em;
+			display:block;
+			position:absolute;
+			bottom:0;
+			color: white;
+			width:100%;
+			margin:0;
+			padding:10px 5px;
+
+		}
+	}
+}
+
+.range{
+	&.item{
+		background:transparent !important;
+		z-index:4;
+	}
+	.key-label{
+		width:52px;
+		text-align:right;
+	}
+	.value-label{
+		width:69px;
+	}
+	input{ z-index: 4;}
+}
+
+#middleOption {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	padding-top:0px !important;
+
+}
+
+.selected{
+	position:absolute;
+	top:275px;
+	width:100%;
+
+	>div{
+		width:20%;
+		float:left;
+
+		img{
+			width: 100%;
+
+		}
+	}
+}
+
+.adh{
+	position:relative;
+	left:47.5%;
+	height:22px;
+
+	&:before {
+        content: "average";
+        margin-left:-22px;
+        position:relative;
+        z-index:3;
+
+    }
+	&:after {
+		content: "";
+		display:block;
+		position:absolute; 
+		top:21px; 
+		z-index:3;
+		height:403px;
+		width: 30px; 
+		border-left:dashed 1px $dark; 
+	}
+
+}
+.comparator{
+	margin-top:333px;
+	transform: translateZ(-100px);
+
+
+	>div{
+		height:26px;
+		position:relative;
+		overflow:hidden;
+		
+		>label{
+
+		}
+		>.value-label{
+			position:absolute;
+			left:50%;
+
+			top:0;
+
+			height:25px;
+			line-height:25px;
+			padding:0 6px;
+
+		}
+		>.value-label.posval{
+			right:50%;
+			left:auto;
+		}
+
+		>.bar{  
+			position:absolute; 
+			left:50%; 
+			top:3px;
+			width:100px; 
+			height:20px; 
+			transform-origin:0;
+			transition:0.4s;
+			transition-timing-function:ease-out;
+		}
+	}
+}
+
+.recipeOverview{
+	.image{
+		height:135px;
+		overflow:hidden;
+		position: relative;
+
+		img{
+			position:absolute;
+			width:100%;
+			top:50%;
+			transform:translateY(-50%);
+		}
+		.bg{
+			top:0;
+			height:100%;
+			width:100%;
+			position:absolute;
+			box-shadow: inset -18px -189px 74px -127px rgba(0,0,0,0.6);
+		}
+
+		h3{
+			position:absolute;
+			bottom:0;
+			color:#fff;
+
+		}
+
+	}
+	.info{
+
+	}
+}
+
+img.ah{
+    height: 36px;
+    left: 15px;
+    position: absolute;
+    top: 5px;
+}
+.loading.big{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:url("../img/loader.gif") no-repeat center center;
+}
+
+.waardering{
+	ul{
+		list-style:none;
+
+		li{
+			float:left;
+			width:14px;
+		}
+	}
+}

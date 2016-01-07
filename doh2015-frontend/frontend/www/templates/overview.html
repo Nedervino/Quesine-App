@@ -1,0 +1,38 @@
+<ion-view view-title="Order Recipes">
+	<ion-content  ng-controller="RecipeOverviewCtrl" class="recipeOverview">
+
+    <div ng-repeat="recipe in recipes track by recipe.id">
+      <div class="image">
+        <img ng-src="{{recipe.recept_afbeelding}}" />
+        <div class="bg">
+        </div>
+        <h3 class="padding" ng-bind-html="recipe.recept_titel"></h3>
+
+
+
+
+      </div>
+        
+        <ion-checkbox ng-model="isChecked">
+
+            <i class="icon ion-ios-timer"></i>
+            {{recipe.recept_tijd}},
+
+            <i class="icon ion-android-contacts"></i>
+            {{recipe.recept_personen}}
+
+        </ion-checkbox>
+
+       
+    </div>
+
+
+    <div class="padding">
+    <button class="button button-block ">
+        <img  class="ah" src="img/albert.png"  />
+        <b>Order online</b>
+
+      </button>
+    </div>
+	</ion-content>
+</ion-view>

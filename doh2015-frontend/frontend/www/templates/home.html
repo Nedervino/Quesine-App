@@ -1,0 +1,77 @@
+<ion-view view-title="Pick Recipes">
+	<ion-content scroll = "false" ng-controller="RecipeCtrl">
+		<td-cards>
+		 	   <td-card id="td-card" ng-repeat="card in cards track by card.id" on-destroy="cardDestroyed($index)"
+              on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+              on-partial-swipe="cardPartialSwipe(amt)">
+              <div class="flip-container" ng-click="flip=!flip" ng-class="{hover: flip==true}" >
+                <div class="flipper ">
+                  <div class="front">
+                        <div class="card">
+                          <div class="image">
+                              <div class="no-text overlayBox" id="dislikeTag"><div class="noBox boxed"></div></div>
+                              <div class="yes-text overlayBox" id="likeTag"><div class="yesBox boxed" id="centerMe">  </div></div>
+                              <img ng-src="{{card.recept_afbeelding}}">
+                              <div class="bg"></div>
+                              <h1 class="receptnaam" ng-bind-html="card.recept_titel"></h1>
+                          </div>
+                          <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" href="#">
+                              <i class="icon ion-ios-timer"></i>
+                              {{card.recept_tijd}}
+                            </a>
+                             <a class="tab-item waardering" href="#" ng-bind-html="card.recept_waardering">
+                            </a>
+                         
+                            <a class="tab-item" href="#">
+                              <i class="icon ion-android-contacts"></i>
+                              {{card.recept_personen}}
+                            </a>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="back">
+                    <div class="card">
+                      <div class="recipe" style="text-align:justify">
+                          <div class="item item-divider" style="margin-bottom:15px;text-align:center;font-style: italic;">
+                            <h2>Ingredients:</h2>
+                           </div>
+                           {{card.recept_ingredienten}}
+
+<!--                     <div class="item tabs tabs-secondary tabs-icon-left">
+                      <a class="tab-item" href="#">
+                        <i class="icon ion-ios-timer"></i>
+                        {{card.receptbereidingstijd}}
+                      </a>
+                      <a class="tab-item" href="#">
+                        <i class="icon ion-chatbox"></i>
+                        {{card.rating}}
+                      </a>
+                      <a class="tab-item" href="#">
+                        <i class="icon ion-android-contacts"></i>
+                        {{card.receptpersonen}}
+                      </a>
+                    </div>
+ --> 
+                     </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </td-card>
+      
+		</td-cards>
+    <div ng-show="cards.length == 0" class="big loading" style="z-index:-1; transform:translateZ(-100px); -webkit-transform:translateZ(-100px);">
+    </div>
+    <div ng-hide="cards.length == 0">
+      <doh-comparator cards="cards" diet="diet"></doh-comparator>
+
+      <div class="content padding">
+        <button class="button button-block button-assertive" ng-click="submit()" ng-disabled="selected.length==0">
+          View {{selected.length}} Favorites
+        </button>
+      </div>
+    </div>
+
+	</ion-content>
+</ion-view>

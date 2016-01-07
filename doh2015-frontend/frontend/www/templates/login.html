@@ -1,0 +1,32 @@
+<ion-view view-title="Diet">
+	<ion-content ng-controller="LoginCtrl">
+		<div class="list">    
+			<div class="item item-divider">
+				Preferred Nutritional Intake
+			</div>
+			<div class="adh"> </div>
+			<div class="item range range-positive" ng-repeat="(key,value) in values2">
+				<span class='key-label'>{{meta[key].name}}: </span>
+				<input 
+					type="range" 
+					name="volume" 
+					min="0" 
+					max="{{meta[key].adh * 2 }}" 
+					step="{{1/Math.pow(10,meta[key].precision+2) }}" 
+					ng-model="values2[key]">
+					
+				<span class='value-label'>{{value|number:meta[key].precision}}{{meta[key].unit}}</span>
+			
+			</div>
+      	    
+	        <ion-checkbox  ng-model="minimize.checked" ng-checked="minimize.checked">
+	        Minimize preparation time
+	        </ion-checkbox>
+	    </div>
+	    <div class="content padding">
+			<button class="button button-block button-assertive" ng-click="submitlogin()">
+				Fetch recipes!
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,62 @@
+<ion-side-menus>
+  <ion-pane ion-side-menu-content style="background-color:#463B3B">
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+    <ion-nav-buttons side="left"> <!-- left -->
+       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+     </ion-nav-buttons>
+
+  </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left" class="dark">
+    <header class="bar bar-header bar-calm">
+      <h1 class="title">Settings</h1>
+    </header>
+    <ion-content class="has-header" style="height:100%;background-color:#463B3B">
+      <span ng-if="!loggedin">
+        <div class="list">
+          <label class="item item-input item-stacked-label" style="border:0px;padding-bottom:15px;">
+            <span class="input-label" style="color:white;padding-bottom:5px;">Philips ID</span>
+            <input type="text" placeholder="account@philips.com" style="padding-left:6px;color:white;background-color:#615252" ng-model="philips.username">
+          </label>
+          <label class="item item-input item-stacked-label" style="border:1px solid rgba(99, 92, 92, 0.68);padding-bottom:15px;">
+            <span class="input-label" style="color:white;padding-bottom:5px;">Password</span>
+            <input type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" style="color:white;background-color:#615252;padding-left:6px;" ng-model="philips.password">
+          </label>
+
+          <button class="button button-block button-royal" style="border-color:rgba(120, 129, 86, 0)" ng-click="submit()">
+            Login 
+          </button>
+
+          <div class="padding">
+            <button class="button icon ion-person-add" style="background-color: #8E8377;margin:10px;" ng-click="demo(1)">  Demo1</button>
+            <button class="button icon ion-person-add" style="background-color: #8E8377;margin:10px;" ng-click="demo(2)">  Demo2</button>
+          </div>
+        </div>
+      </span>
+      <span ng-if="loggedin">
+
+        <div class="item item-icon-left item-icon-right" style="padding:25px;border-bottom:0px;background-color:rgba(152, 147, 165, 0.31);color:#C7ABAB;" href="#">
+          <i class="icon ion-ios-body"></i>
+            <span style="margin-left:20px;">{{philips.username}}</span>
+            <a class="button button-icon icon ion-log-out" style="color:#C7ABAB;position:absolute;top:-1px;" ng-click="logout()"></a>
+        </div>       
+      </span>
+<!--       <ion-list>
+        <ion-item nav-clear menu-close href="#/app/search">
+          Philips ID
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/browse">
+          Philips Wachtwoord
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/playlists">
+          Playlists
+        </ion-item>
+      </ion-list> -->
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
